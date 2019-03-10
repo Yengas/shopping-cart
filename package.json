@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node bin/index",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test-watch": "npm run test -- --watch",
     "lint": "eslint --ignore-pattern \"node_modules/**/*.js\" \"**/*.js\"",
     "lint-fix": "npm run lint -- --fix"
   },
@@ -16,6 +17,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,jsx,ts,tsx}": [
+      "npm test",
       "npm run lint-fix",
       "git add"
     ]
@@ -45,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "husky": "^1.3.1",
+    "jest": "^24.3.1",
     "lint-staged": "^8.1.5"
   }
 }
