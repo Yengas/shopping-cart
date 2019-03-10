@@ -11,6 +11,7 @@ const removeProductFromCartProducts = (cartProducts, product) => (
   cartProducts
     .filter(cartProduct => !cartProduct.productEquals(product))
 );
+
 /**
  * Finds the cart product of the given product
  * @param cartProducts
@@ -21,6 +22,7 @@ const findCartProduct = (cartProducts, product) => (
   cartProducts
     .find(cartProduct => cartProduct.productEquals(product))
 );
+
 /**
  * Get the total number of products in the cart.
  * @param cartProducts

@@ -7,7 +7,7 @@ const Category = require('./Category');
 class Product {
   /**
    * @param {String} title
-   * @param {Number} price
+   * @param {Number} price is in cents
    * @param {Category} category
    */
   constructor(title, price, category) {

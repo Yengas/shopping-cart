@@ -50,6 +50,15 @@ function isNonNegativeInteger(value) {
   return Number.isInteger(value) && value > 0;
 }
 
+/**
+ * Check if the given instance is a enum of the type of given klass
+ * @param instance
+ * @param klass
+ */
+function isEnum(instance, klass) {
+  return Object.values(klass).includes(instance);
+}
+
 module.exports = {
   isString,
   isNonEmptyString,
@@ -57,4 +66,5 @@ module.exports = {
   isNumber,
   isNonNegativeNumber,
   isNonNegativeInteger,
+  isEnum,
 };
