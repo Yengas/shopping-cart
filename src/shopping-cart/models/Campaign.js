@@ -21,6 +21,10 @@ class Campaign {
       throw new Error('category should be of type Category');
     }
 
+    if (!category.isLeaf) {
+      throw new Error('campaigns can only be applied to leaf categories');
+    }
+
     if (!isNonNegativeInteger(minItemCount)) {
       throw new Error('minItemCount should be a positive integer for Campaign');
     }

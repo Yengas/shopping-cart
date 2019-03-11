@@ -79,7 +79,7 @@ const Products = insertToDAO(productDAO, {
 });
 
 const Campaigns = {
-  TechnologyCampaign: new Campaign(Categories.Technology, 20, 3, DiscountType.Rate),
+  DesktopCampaign: new Campaign(Categories.Desktop, 20, 3, DiscountType.Rate),
   // 10.000 cents => 100$
   LaptopCampaign: new Campaign(Categories.Laptop, 10000, 3, DiscountType.Amount),
   ActionBookCampaign: new Campaign(Categories.Action, 35, 1, DiscountType.Rate),

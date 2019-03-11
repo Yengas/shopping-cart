@@ -28,6 +28,10 @@ class Product {
       throw new Error('category should be of type Category');
     }
 
+    if (!category.isLeaf) {
+      throw new Error('cannot assign non leaf category to products');
+    }
+
     this.id = id;
     this.title = title;
     this.price = price;
