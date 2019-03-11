@@ -73,6 +73,7 @@ const Categories = insertToDAO(categoryDAO, {
 const Products = insertToDAO(productDAO, {
   AcerAspire: createProduct('Acer Aspire C24-865-ACi5NT', 59900, Categories.Desktop),
   MacbookPro: createProduct('Apple MacBook Pro', 210000, Categories.Laptop),
+  MonsterNotebook: createProduct('Monster Notebook', 100000, Categories.Laptop),
   ManInGreenFaces: createProduct('Men in Green Faces', 600, Categories.Action),
   TouchingTheVoid: createProduct('Touching the Void', 1400, Categories.Adventure),
   TheSummerHouse: createProduct('The Summer House', 1000, Categories.Romance),
