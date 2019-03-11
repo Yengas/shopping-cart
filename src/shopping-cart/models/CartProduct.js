@@ -12,7 +12,7 @@ class CartProduct {
    */
   constructor(product, count) {
     if (!(product instanceof Product)) {
-      throw new Error('product should be instance of the Category class');
+      throw new Error('product should be instance of the Product class');
     }
 
     if (!isNonNegativeInteger(count)) {

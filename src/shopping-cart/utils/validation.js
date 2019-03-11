@@ -59,6 +59,14 @@ function isEnum(instance, klass) {
   return Object.values(klass).includes(instance);
 }
 
+/**
+ * Check if the given string is a valid id
+ * @param str
+ */
+function isId(str) {
+  return str === null || isNonNegativeNumber(parseInt(str, 10));
+}
+
 module.exports = {
   isString,
   isNonEmptyString,
@@ -67,4 +75,5 @@ module.exports = {
   isNonNegativeNumber,
   isNonNegativeInteger,
   isEnum,
+  isId,
 };
