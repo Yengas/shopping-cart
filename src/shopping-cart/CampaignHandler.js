@@ -42,6 +42,7 @@ const getTotalPriceForCategory = (cartProducts, category) => (
 /**
  * Default campaign handler that looks at the campaign category,
  * and the cart products category
+ * @extends CampaignHandler
  */
 class DefaultCampaignHandler extends CampaignHandler {
   /* eslint-disable class-methods-use-this */
