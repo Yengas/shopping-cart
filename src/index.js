@@ -4,6 +4,7 @@ const Table = require('cli-table');
 const {
   Products,
   Campaigns,
+  Coupons,
 } = require('./assets/console.data');
 const { DeliveryCosts } = require('./constants');
 const { Cart, CartHelper } = require('./shopping-cart');
@@ -93,6 +94,33 @@ function campaignsLine(campaigns) {
   return `# Available Campaigns\r\n${table.toString()}`;
 }
 
+/**
+ * @param isPicked
+ * @param {Coupon} coupon
+ * @returns {*[]}
+ */
+function couponLine(isPicked, coupon) {
+  return [
+    isPicked ? '✓' : '',
+    coupon.minCartAmount,
+    ...discountLine(coupon.discountAmount, coupon.discountType),
+  ];
+}
+
+function couponsLine(coupons) {
+  const table = new Table({
+    head: ['id', 'picked', 'min amount', 'amount', 'type'],
+  });
+
+  table.push(...coupons.map(
+    (coupon, idx) => (
+      [`${idx + 1}`, ...couponLine(state.coupon === coupon, coupon)]
+    ),
+  ));
+
+  return `# Available Coupons\r\n${table.toString()}`;
+}
+
 function reset() {
   state.flash = '';
   state.stage = Stages.CartCreate;
@@ -116,6 +144,14 @@ function nextStage() {
 
   if (state.stage === Stages.CampaignPick) {
     state.stage = Stages.CouponPick;
+    state.finalized = cartHelper.finalizeCart(state.cart, state.campaign, null);
+    state.flash = '';
+    return true;
+  }
+
+  if (state.stage === Stages.CouponPick) {
+    state.stage = Stages.Finalized;
+    state.finalized = cartHelper.finalizeCart(state.cart, state.campaign, state.coupon);
     state.flash = '';
     return true;
   }
@@ -151,10 +187,21 @@ function pickCampaign(idxStr) {
   state.campaign = gAvailableCampaigns[idx - 1];
 }
 
+let gAvailableCoupons = [];
+function pickCoupon(idxStr) {
+  if (state.stage !== Stages.CouponPick) throw new Error('invalid stage');
+  const idx = parseInt(idxStr, 10);
+  if (Number.isNaN(idx) || idx < 1 || idx > gAvailableCoupons.length) {
+    throw new Error('coupon no available');
+  }
+  state.coupon = gAvailableCoupons[idx - 1];
+}
+
 const Commands = {
   AddItem: { cmd: 'add-item', func: addItem },
   RemoveItem: { cmd: 'remove-item', func: removeItem },
   PickCampaign: { cmd: 'pick-campaign', func: pickCampaign },
+  PickCoupon: { cmd: 'pick-coupon', func: pickCoupon },
   Next: { cmd: 'next', func: nextStage },
   Exit: { cmd: 'exit', func: exitFunc },
   Reset: { cmd: 'reset', func: reset },
@@ -179,6 +226,20 @@ function renderSecondStage() {
   console.log(campaignsLine(availableCampaigns));
 }
 
+function renderThirdStage() {
+  console.log(cartLine(state.cart));
+  const availableCoupons = (
+    Coupons
+      .filter(coupon => cartHelper.doesCouponApplyForCart(state.finalized, coupon))
+  );
+  gAvailableCoupons = availableCoupons;
+  if (availableCoupons.length === 0) {
+    nextStage();
+    throw new Error('no coupons available, skipped to the end');
+  }
+  console.log(couponsLine(availableCoupons));
+}
+
 function render() {
   console.log(`--------${state.flash ? state.flash : ''}------------`);
 
@@ -186,6 +247,8 @@ function render() {
     renderFirstStage();
   } else if (state.stage === Stages.CampaignPick) {
     renderSecondStage();
+  } else if (state.stage === Stages.CouponPick) {
+    renderThirdStage();
   }
 
   state.flash = '';
