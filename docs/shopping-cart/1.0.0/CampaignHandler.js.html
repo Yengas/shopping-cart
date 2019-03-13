@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>CampaignHandler.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CampaignHandler.html">CampaignHandler</a><ul class='methods'><li data-type='method'><a href="CampaignHandler.html#getDiscount">getDiscount</a></li></ul></li><li><a href="DefaultCampaignHandler.html">DefaultCampaignHandler</a><ul class='methods'><li data-type='method'><a href="DefaultCampaignHandler.html#getDiscount">getDiscount</a></li></ul></li><li><a href="Cart.html">Cart</a><ul class='methods'><li data-type='method'><a href="Cart.html#addItem">addItem</a></li><li data-type='method'><a href="Cart.html#removeItem">removeItem</a></li></ul></li><li><a href="CartHelper.html">CartHelper</a><ul class='methods'><li data-type='method'><a href="CartHelper.html#pickBestCampaign">pickBestCampaign</a></li><li data-type='method'><a href="CartHelper.html#finalizeCart">finalizeCart</a></li><li data-type='method'><a href="CartHelper.html#doesCampaignApplyForCart">doesCampaignApplyForCart</a></li><li data-type='method'><a href="CartHelper.html#doesCouponApplyForCart">doesCouponApplyForCart</a></li><li data-type='method'><a href="CartHelper.html#.createDefault">createDefault</a></li></ul></li><li><a href="CouponHandler.html">CouponHandler</a><ul class='methods'><li data-type='method'><a href="CouponHandler.html#getDiscount">getDiscount</a></li></ul></li><li><a href="DefaultCouponHandler.html">DefaultCouponHandler</a><ul class='methods'><li data-type='method'><a href="DefaultCouponHandler.html#getDiscount">getDiscount</a></li></ul></li><li><a href="DeliveryCostCalculator.html">DeliveryCostCalculator</a><ul class='methods'><li data-type='method'><a href="DeliveryCostCalculator.html#calculateFor">calculateFor</a></li></ul></li><li><a href="DiscountApplier.html">DiscountApplier</a><ul class='methods'><li data-type='method'><a href="DiscountApplier.html#applyDiscount">applyDiscount</a></li></ul></li><li><a href="DiscountRateApplier.html">DiscountRateApplier</a><ul class='methods'><li data-type='method'><a href="DiscountRateApplier.html#applyDiscount">applyDiscount</a></li></ul></li><li><a href="DiscountAmountApplier.html">DiscountAmountApplier</a><ul class='methods'><li data-type='method'><a href="DiscountAmountApplier.html#applyDiscount">applyDiscount</a></li></ul></li><li><a href="CategoryDAO.html">CategoryDAO</a><ul class='methods'><li data-type='method'><a href="CategoryDAO.html#insert">insert</a></li><li data-type='method'><a href="CategoryDAO.html#replace">replace</a></li><li data-type='method'><a href="CategoryDAO.html#getForId">getForId</a></li></ul></li><li><a href="DataAccessObject.html">DataAccessObject</a><ul class='methods'><li data-type='method'><a href="DataAccessObject.html#insert">insert</a></li><li data-type='method'><a href="DataAccessObject.html#replace">replace</a></li><li data-type='method'><a href="DataAccessObject.html#getForId">getForId</a></li></ul></li><li><a href="ProductDAO.html">ProductDAO</a><ul class='methods'><li data-type='method'><a href="ProductDAO.html#insert">insert</a></li><li data-type='method'><a href="ProductDAO.html#replace">replace</a></li><li data-type='method'><a href="ProductDAO.html#getForId">getForId</a></li></ul></li><li><a href="ShoppingCartError.html">ShoppingCartError</a></li><li><a href="Campaign.html">Campaign</a><ul class='methods'><li data-type='method'><a href="Campaign.html#equals">equals</a></li></ul></li><li><a href="CartProduct.html">CartProduct</a><ul class='methods'><li data-type='method'><a href="CartProduct.html#productEquals">productEquals</a></li></ul></li><li><a href="Category.html">Category</a><ul class='methods'><li data-type='method'><a href="Category.html#withId">withId</a></li><li data-type='method'><a href="Category.html#equals">equals</a></li></ul></li><li><a href="Coupon.html">Coupon</a><ul class='methods'><li data-type='method'><a href="Coupon.html#equals">equals</a></li></ul></li><li><a href="FinalizedCart.html">FinalizedCart</a></li><li><a href="Product.html">Product</a><ul class='methods'><li data-type='method'><a href="Product.html#withId">withId</a></li><li data-type='method'><a href="Product.html#equals">equals</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#getTotalPriceForCategory">getTotalPriceForCategory</a></li><li><a href="global.html#removeProductFromCartProducts">removeProductFromCartProducts</a></li><li><a href="global.html#findCartProduct">findCartProduct</a></li><li><a href="global.html#getProductCountInCart">getProductCountInCart</a></li><li><a href="global.html#getCartPricesByCategory">getCartPricesByCategory</a></li><li><a href="global.html#applyCampaignToCart">applyCampaignToCart</a></li><li><a href="global.html#applyCouponToAmount">applyCouponToAmount</a></li><li><a href="global.html#getDistinctCategoriesFromCartProducts">getDistinctCategoriesFromCartProducts</a></li><li><a href="global.html#insertToDAO">insertToDAO</a></li><li><a href="global.html#convertIndexToId">convertIndexToId</a></li><li><a href="global.html#convertIdToIndex">convertIdToIndex</a></li><li><a href="global.html#DiscountType">DiscountType</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#isNonEmptyString">isNonEmptyString</a></li><li><a href="global.html#isMaybeOfType">isMaybeOfType</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isNonNegativeNumber">isNonNegativeNumber</a></li><li><a href="global.html#isNonNegativeInteger">isNonNegativeInteger</a></li><li><a href="global.html#isEnum">isEnum</a></li><li><a href="global.html#isId">isId</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">CampaignHandler.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { DiscountApplierFactory } = require('./Discount');
+
+/**
+ * @typedef {{ categoryId: string, discountedPrice: Number }} CategoryDiscountResult
+ */
+
+/**
+ * Interface class for campaign handling related logic
+ */
+class CampaignHandler {
+  /* eslint-disable */
+  /**
+   * Apply discount to the given card products
+   * @param {Cart} cart
+   * @param {Campaign} campaign
+   * @returns {CategoryDiscountResult}
+   */
+  getDiscount(cart, campaign) {
+    throw new Error('not implemented');
+  }
+  /* eslint-enable */
+}
+
+/**
+ * Calculate how much the user will pay for the given category.
+ * @param {CartProduct[]} cartProducts
+ * @param {Category} category
+ * @returns {Number}
+ */
+const getTotalPriceForCategory = (cartProducts, category) => (
+  cartProducts
+    .filter(({ product }) => product.category.equals(category))
+    .reduce(
+      ({ count: categoryCount, price }, { count, product }) => ({
+        count: categoryCount + count,
+        price: price + (product.price * count),
+      }),
+      { count: 0, price: 0 },
+    )
+);
+
+/**
+ * Default campaign handler that looks at the campaign category,
+ * and the cart products category
+ * @extends CampaignHandler
+ */
+class DefaultCampaignHandler extends CampaignHandler {
+  /* eslint-disable class-methods-use-this */
+  /**
+   * Given a cart, and the campaign, calculate how much discount
+   * will be applied to the given cart, on which category and how much.
+   * @param {Cart} cart
+   * @param {Campaign} campaign
+   * @returns {CategoryDiscountResult|null}
+   */
+  getDiscount(cart, campaign) {
+    const { discountAmount, discountType, category } = campaign;
+    const { products: cartProducts } = cart;
+    const da = DiscountApplierFactory.create(discountAmount, discountType);
+    const {
+      price: totalCategorySpent,
+      count: categoryProductCount,
+    } = getTotalPriceForCategory(cartProducts, category);
+
+    if (totalCategorySpent &lt;= 0 || categoryProductCount &lt; campaign.minItemCount) return null;
+
+    return {
+      categoryId: category.id,
+      discountedPrice: da.applyDiscount(totalCategorySpent),
+    };
+  }
+  /* eslint-enable */
+}
+
+module.exports = DefaultCampaignHandler;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 13 2019 04:34:30 GMT+0300 (GMT+03:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>
