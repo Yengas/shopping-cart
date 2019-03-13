@@ -3,6 +3,6 @@ module.exports = {
   DeliveryCosts: {
     costPerDelivery: 100,
     costPerProduct: 100,
-    fixedCost: 2900,
+    fixedCost: 290,
   },
 };

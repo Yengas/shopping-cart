@@ -102,7 +102,7 @@ function campaignsLine(campaigns) {
 function couponLine(isPicked, coupon) {
   return [
     isPicked ? '✓' : '',
-    coupon.minCartAmount,
+    priceText(coupon.minCartAmount),
     ...discountLine(coupon.discountAmount, coupon.discountType),
   ];
 }
@@ -119,6 +119,25 @@ function couponsLine(coupons) {
   ));
 
   return `# Available Coupons\r\n${table.toString()}`;
+}
+
+/**
+ * @param {FinalizedCart} finalized
+ */
+function finalizedLine(finalized) {
+  const table = new Table({
+    head: ['basket', 'final', 'campaign discount', 'coupon discount', 'delivery cost'],
+  });
+
+  table.push([
+    priceText(finalized.originalPrice),
+    priceText(finalized.finalAmount),
+    priceText(finalized.campaignDiscountAmount),
+    priceText(finalized.couponDiscountAmount),
+    priceText(finalized.deliveryCost),
+  ]);
+
+  return `# Financials\r\n${table.toString()}`;
 }
 
 function reset() {
@@ -240,6 +259,11 @@ function renderThirdStage() {
   console.log(couponsLine(availableCoupons));
 }
 
+function renderFourthStage() {
+  console.log(cartLine(state.cart));
+  console.log(finalizedLine(state.finalized));
+}
+
 function render() {
   console.log(`--------${state.flash ? state.flash : ''}------------`);
 
@@ -249,6 +273,8 @@ function render() {
     renderSecondStage();
   } else if (state.stage === Stages.CouponPick) {
     renderThirdStage();
+  } else if (state.stage === Stages.Finalized) {
+    renderFourthStage();
   }
 
   state.flash = '';
